@@ -1,3 +1,21 @@
 <h1><%= @space_station.name %></h1>
 <h3>Crew Capacity: <%= @space_station.capacity %></h3>
 <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
+
+<%= simple_form_for [@space_station, @installment] do |f| %>
+  <%= f.association :component, label_method: :component_type, as: :radio_buttons %>
+  <%= f.submit "Add Module" %>
+<% end %>
+
+<% @components.each do |component| %>
+  <div class="card" style="background-image: url('<%= component.image_url %>')">
+    <%= image_tag component.image_url %>
+    <h2><%= component.component_type %></h2>
+  </div>
+<% end %>
+
+
+
+Component.find(params[:installment][:component_id])
+
+.last to grab most recent addition
