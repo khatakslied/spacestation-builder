@@ -7,11 +7,11 @@
   <%= f.submit "Add Module" %>
 <% end %>
 
-<div class="station-container">
+<div class="station-container" style="background-image: url(<%=  %>)">
   <% @components.each do |component| %>
     <div class="station-module-card">
       <%= image_tag component.image_url %>
-      <h2 class="station-module-type-name"><%= component.component_type %></h2>
+      <p><%= component.component_type.capitalize %> Module</p>
     </div>
   <% end %>
 </div>
