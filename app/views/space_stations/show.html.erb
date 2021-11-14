@@ -7,15 +7,15 @@
   <%= f.submit "Add Module" %>
 <% end %>
 
-<% @components.each do |component| %>
-  <div class="card" style="background-image: url('<%= component.image_url %>')">
-    <%= image_tag component.image_url %>
-    <h2><%= component.component_type %></h2>
-  </div>
-<% end %>
+<div class="station-container">
+  <% @components.each do |component| %>
+    <div class="station-module-card">
+      <%= image_tag component.image_url %>
+      <h2 class="station-module-type-name"><%= component.component_type %></h2>
+    </div>
+  <% end %>
+</div>
 
 
-
-Component.find(params[:installment][:component_id])
 
 .last to grab most recent addition
