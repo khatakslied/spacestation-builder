@@ -1,7 +1,7 @@
 class SpaceStation < ApplicationRecord
-  has_many :installments, dependent: :destroy
+  has_many :attachment_spaces, dependent: :destroy
   has_many :crew_members, dependent: :destroy
-  has_many :components, through: :installments
+  has_many :components, through: :attachment_spaces
   validates :name, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true }
   validates :power, presence: true, numericality: { only_integer: true }
@@ -11,6 +11,7 @@ class SpaceStation < ApplicationRecord
     12.times do
       @attachment_space = AttachmentSpace.new
       @attachment_space.space_station = self
+      @attachment_space
       @attachment_space.save!
     end
   end
