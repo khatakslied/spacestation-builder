@@ -30,6 +30,7 @@ class SpaceStationsController < ApplicationController
 
   def update
     @space_station.update(space_station_params)
+    # @component = Component.find(params[:attachment_space][:component_id])
     redirect_to space_station_path(@space_station)
   end
 
