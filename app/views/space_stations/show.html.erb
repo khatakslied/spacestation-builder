@@ -8,6 +8,12 @@
       <div class="station-module-card">
         <% if attachment_space.component.present? %>
           <%= image_tag attachment_space.component.image_url %>
+        <% else %>
+          <%= form_with(url: a_path(attachment_space.id), local: true, method: :update) do |f| %>
+          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+          <%= f.association :component, label_method: :component_type %>
+          <%= f.submit "Attach Module" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
