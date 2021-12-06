@@ -6,7 +6,7 @@ class SpaceStationsController < ApplicationController
   end
 
   def show
-    @installment = Installment.new
+    @attachment_space = AttachmentSpace.new
     @components = @space_station.components
   end
 

@@ -1,10 +1,10 @@
-class InstallmentsController < ApplicationController
+class AttachmentSpacesController < ApplicationController
   def create
     @space_station = SpaceStation.find(params[:space_station_id])
-    @installment = Installment.new(installment_params)
-    @installment.space_station = @space_station
-    @component = Component.find(params[:installment][:component_id])
-    if @installment.save
+    @installment = AttachmentSpace.new(attachment_space_params)
+    @attachment_space.space_station = @space_station
+    @component = Component.find(params[:attachment_space][:component_id])
+    if @attachment_space.save
       update_station_stats
       redirect_to space_station_path(@space_station)
     else
@@ -20,7 +20,7 @@ class InstallmentsController < ApplicationController
     @space_station.save
   end
 
-  def installment_params
-    params.require(:installment).permit(:component_id)
+  def attachment_space_params
+    params.require(:attachment_space).permit(:component_id)
   end
 end
