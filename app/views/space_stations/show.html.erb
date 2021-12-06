@@ -3,19 +3,13 @@
   <h3>Crew Capacity: <%= @space_station.capacity %></h3>
   <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
 
-
-    <%= simple_form_for [@space_station, @attachment_space] do |f| %>
-      <%= f.association :component, label_method: :component_type, as: :radio_buttons %>
-      <%= f.submit "Attach Module" %>
-    <% end %>
-
-
   <div class="station-container">
-    <%# <% @attachment_spaces.each do |attachment_space| %>
-      <div class="station-module-card"> %>
-        <%# <%= image_tag attachment_space.component.image_url %> %>
-        <%# <p><%= attachment_spacecomponent.component_type.split("-").last.capitalize %> Module</p> %>
-      <%# </div>
+    <% @attachment_spaces.each do |attachment_space| %>
+      <div class="station-module-card">
+        <% if attachment_space.component.present? %>
+          <%= image_tag attachment_space.component.image_url %>
+        <% end %>
+      </div>
     <% end %>
-  </div> %>
+  </div>
 </div>

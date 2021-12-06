@@ -8,11 +8,20 @@ class SpaceStation < ApplicationRecord
   after_create :generate_attachment_spaces
 
   def generate_attachment_spaces
-    12.times do
+    8.times do
       @attachment_space = AttachmentSpace.new
       @attachment_space.space_station = self
-      @attachment_space
+      @attachment_space.save!
+    end
+    @attachment_space = AttachmentSpace.new
+    @attachment_space.space_station = self
+    @attachment_space.component = Component.find(1)
+    @attachment_space.save!
+    3.times do
+      @attachment_space = AttachmentSpace.new
+      @attachment_space.space_station = self
       @attachment_space.save!
     end
   end
+
 end
