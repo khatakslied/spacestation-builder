@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_171658) do
+ActiveRecord::Schema.define(version: 2021_12_06_174007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attachment_spaces", force: :cascade do |t|
     t.bigint "space_station_id", null: false
-    t.bigint "component_id", null: false
+    t.bigint "component_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["component_id"], name: "index_attachment_spaces_on_component_id"
