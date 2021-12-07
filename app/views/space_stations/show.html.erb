@@ -1,21 +1,21 @@
-<h1><%= @space_station.name %></h1>
-<h3>Crew Capacity: <%= @space_station.capacity %></h3>
-<h3>Current Power Output: <%= @space_station.power %> kWh</h3>
+<div class="container">
+  <h1><%= @space_station.name %></h1>
+  <h3>Crew Capacity: <%= @space_station.capacity %></h3>
+  <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
 
-<%= simple_form_for [@space_station, @installment] do |f| %>
-  <%= f.association :component, label_method: :component_type, as: :radio_buttons %>
-  <%= f.submit "Add Module" %>
-<% end %>
-
-<div class="station-container" style="background-image: url(<%=  %>)">
-  <% @components.each do |component| %>
-    <div class="station-module-card">
-      <%= image_tag component.image_url %>
-      <p><%= component.component_type.capitalize %> Module</p>
-    </div>
-  <% end %>
+  <div class="station-container">
+    <% @attachment_spaces.each do |attachment_space| %>
+      <div class="station-module-card">
+        <% if attachment_space.component.present? %>
+          <%= image_tag attachment_space.component.image_url %>
+        <% else %>
+          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+          <%= f.collection_select :component, Component.all, :id, :component_type %>
+          <%= f.submit "Attach Module" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
-
-.last to grab most recent addition

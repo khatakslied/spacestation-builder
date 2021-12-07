@@ -3,9 +3,11 @@
   width: 250px;
   height: 191px;
   overflow: hidden;
+    background-color: rgba($color: red, $alpha: 0.2);
   img {
     position: absolute;
-    // left: -272px;
+    animation: move 5s infinite;
+    left: -250px;
   }
   p {
     position: absolute;

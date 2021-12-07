@@ -6,8 +6,8 @@ class SpaceStationsController < ApplicationController
   end
 
   def show
-    @installment = Installment.new
-    @components = @space_station.components
+    @attachment_space = AttachmentSpace.new
+    @attachment_spaces = @space_station.attachment_spaces
   end
 
   def new
@@ -30,6 +30,7 @@ class SpaceStationsController < ApplicationController
 
   def update
     @space_station.update(space_station_params)
+    # @component = Component.find(params[:attachment_space][:component_id])
     redirect_to space_station_path(@space_station)
   end
 

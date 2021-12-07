@@ -1,5 +1,5 @@
 class Component < ApplicationRecord
-  has_many :space_stations, through: :installments
+  has_many :space_stations, through: :attachment_spaces
   validates :image_url, presence: true
   COMPONENTTYPES =
     ['docking',
