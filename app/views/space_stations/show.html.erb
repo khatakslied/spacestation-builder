@@ -1,46 +1,47 @@
-<div class="container">
-  <h1><%= @space_station.name %></h1>
-  <h3>Crew Capacity: <%= @space_station.capacity %></h3>
-  <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
 
-  <div class="station-container">
-    <% @top_row.each do |attachment_space| %>
-      <div class="station-module-card" onmouseover="animate()">
-        <% if attachment_space.component.present? %>
-          <%= image_tag attachment_space.component.image_url %>
-        <% elsif @attachment_spaces.where(id: (attachment_space.id + 6), component_id: 1..2).present? %>
-          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
-          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
-          <%= f.collection_select :component, Component.where(id: 6..7), :id, :component_type %>
-          <%= f.submit "Attach Module" %>
+  <div class="space-container">
+    <h1><%= @space_station.name %></h1>
+    <h3>Crew Capacity: <%= @space_station.capacity %></h3>
+    <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
+
+    <div class="station-container">
+      <% @top_row.each do |attachment_space| %>
+        <div class="station-module-card">
+          <% if attachment_space.component.present? %>
+            <%= image_tag attachment_space.component.image_url %>
+          <% elsif @attachment_spaces.where(id: (attachment_space.id + 6), component_id: 1..2).present? %>
+            <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+            <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+            <%= f.collection_select :component, Component.where(id: 6..7), :id, :component_type %>
+            <%= f.submit "Attach Module" %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <% @bottom_row.each do |attachment_space| %>
-      <div class="station-module-card">
-        <% if attachment_space.component.present? %>
-          <%= image_tag attachment_space.component.image_url %>
-        <% elsif attachment_space.id == @bottom_row.first.id %>
-          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
-          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
-          <%= f.collection_select :component, Component.where(id: 4), :id, :component_type %>
-          <%= f.submit "Attach Module" %>
+        </div>
+      <% end %>
+      <% @bottom_row.each do |attachment_space| %>
+        <div class="station-module-card">
+          <% if attachment_space.component.present? %>
+            <%= image_tag attachment_space.component.image_url %>
+          <% elsif attachment_space.id == @bottom_row.first.id %>
+            <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+            <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+            <%= f.collection_select :component, Component.where(id: 4), :id, :component_type %>
+            <%= f.submit "Attach Module" %>
+            <% end %>
+          <% elsif attachment_space.id == @bottom_row.last.id %>
+            <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+            <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+            <%= f.collection_select :component, Component.where(id: 5), :id, :component_type %>
+            <%= f.submit "Attach Module" %>
+            <% end %>
+          <% else %>
+            <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+            <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+            <%= f.collection_select :component, Component.where(id: 2..3), :id, :component_type %>
+            <%= f.submit "Attach Module" %>
+            <% end %>
           <% end %>
-        <% elsif attachment_space.id == @bottom_row.last.id %>
-          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
-          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
-          <%= f.collection_select :component, Component.where(id: 5), :id, :component_type %>
-          <%= f.submit "Attach Module" %>
-          <% end %>
-        <% else %>
-          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
-          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
-          <%= f.collection_select :component, Component.where(id: 2..3), :id, :component_type %>
-          <%= f.submit "Attach Module" %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
