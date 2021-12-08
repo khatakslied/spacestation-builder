@@ -6,8 +6,8 @@ class SpaceStationsController < ApplicationController
   end
 
   def show
-    @attachment_space = AttachmentSpace.new
-    @attachment_spaces = @space_station.attachment_spaces
+    # @attachment_space = AttachmentSpace.new
+    @attachment_spaces = @space_station.attachment_spaces.order("id ASC")
   end
 
   def new
