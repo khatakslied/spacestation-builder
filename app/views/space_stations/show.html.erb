@@ -4,7 +4,21 @@
   <h3>Current Power Output: <%= @space_station.power %> kWh</h3>
 
   <div class="station-container">
-    <% @attachment_spaces.each do |attachment_space| %>
+    <% @top_row.each do |attachment_space| %>
+      <div class="station-module-card">
+        <%= attachment_space.id %>
+        <% if attachment_space.component.present? %>
+          <%= image_tag attachment_space.component.image_url %>
+        <% elsif @attachment_spaces.where(id: (attachment_space.id + 6), component_id: 1..2).present? %>
+          <%= form_with(url: space_station_attachment_space_path(attachment_space.id), local: true, method: :patch) do |f| %>
+          <%= f.hidden_field(:attachment_space_id, value: attachment_space.id) %>
+          <%= f.collection_select :component, Component.all, :id, :component_type %>
+          <%= f.submit "Attach Module" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <% @bottom_row.each do |attachment_space| %>
       <div class="station-module-card">
         <%= attachment_space.id %>
         <% if attachment_space.component.present? %>
