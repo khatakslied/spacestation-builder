@@ -1,9 +1,9 @@
 @keyframes animate-station {
-    0% { margin-top: 48px; transform: rotate(0.2deg); }
-    25% { margin-top: 47px; transform: rotate(0deg); }
-    50% { margin-top: 46px; transform: rotate(-0.2deg); }
-    75% { margin-top: 47px; transform: rotate(0deg); }
-    100% { margin-top: 48px; transform: rotate(0.2deg); }
+    0% { margin-top: 48px; }
+    25% { margin-top: 47px; }
+    50% { margin-top: 46px; }
+    75% { margin-top: 47px; }
+    100% { margin-top: 48px; }
 }
 
 .station-container {
@@ -11,7 +11,7 @@
   grid-template-columns: repeat(6, 200px);
   grid-template-rows: 152px 152px;
   animation-name: animate-station;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(1);
 }
