@@ -1,7 +1,17 @@
+@keyframes animate-station {
+    0% { margin-top: 48px; }
+    25% { margin-top: 47px; }
+    50% { margin-top: 46px; }
+    75% { margin-top: 47px; }
+    100% { margin-top: 48px; }
+}
+
 .station-container {
   display: grid;
-  grid-template-columns: repeat(6, 250px);
-  grid-template-rows: 191px 191px;
-  grid-gap: 4px;
-  background-image: url();
+  grid-template-columns: repeat(6, 200px);
+  grid-template-rows: 152px 152px;
+  animation-name: animate-station;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1);
 }

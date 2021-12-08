@@ -1,9 +1,11 @@
-<h1>SpaceStations#index</h1>
+<div class="space-container">
+  <h1>Space Stations</h1>
+  <% @space_stations.each do |station| %>
+    <div class="index-card">
+      <h2><%= station.name %></h2>
+      <%= link_to "[Visit]", space_station_path(station) %>
+    </div>
+  <% end %>
 
-<% @space_stations.each do |station| %>
-  <div class="card">
-    <h2><%= station.name %></h2>
-  </div>
-<% end %>
-
-<%= link_to "Build a New Space Station", :new_space_station %>
+  <%= link_to "[Build a New Space Station]", :new_space_station %>
+</div>

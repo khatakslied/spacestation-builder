@@ -1,23 +1,43 @@
+@keyframes animate-modules {
+    0% { left: 0px; }
+    25% { left: -200px; }
+    50% { left: -400px; }
+    75% { left: -200px; }
+    100% { left: 0px; }
+}
+
 .station-module-card {
   position: relative;
-  width: 250px;
-  height: 191px;
+  width: 200px;
+  height: 152px;
   overflow: hidden;
-    background-color: rgba($color: red, $alpha: 0.2);
   img {
     position: absolute;
-    animation: move 5s infinite;
-    left: -250px;
+    animation-name: animate-modules;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
   }
-  p {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
+  input {
+    font-size: 0.8rem;
+    background: none;
+    border: none;
+    color: $green;
     transition: 1s;
+    &:hover {
+      color: $dark-green;
     }
-  &:hover p{
-    opacity: 1;
-    text-shadow: 0.5px 0.5px 0.5px $gray;
+  }
+  select {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.8rem;
+    background: none;
+    border: none;
+    padding: 2px;
+    color: $light-gray;
+    &:focus {
+      outline: none;
+    }
   }
 }

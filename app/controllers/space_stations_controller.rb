@@ -6,8 +6,10 @@ class SpaceStationsController < ApplicationController
   end
 
   def show
-    @attachment_space = AttachmentSpace.new
-    @attachment_spaces = @space_station.attachment_spaces
+    # @attachment_space = AttachmentSpace.new
+    @attachment_spaces = @space_station.attachment_spaces.order("id ASC")
+    @top_row = @attachment_spaces.where(id: @attachment_spaces.first.id..(@attachment_spaces.last.id - 6))
+    @bottom_row = @attachment_spaces.where(id: (@attachment_spaces.last.id - 5)..@attachment_spaces.last.id)
   end
 
   def new
