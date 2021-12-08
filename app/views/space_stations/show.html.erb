@@ -6,6 +6,7 @@
   <div class="station-container">
     <% @attachment_spaces.each do |attachment_space| %>
       <div class="station-module-card">
+        <%= attachment_space.id %>
         <% if attachment_space.component.present? %>
           <%= image_tag attachment_space.component.image_url %>
         <% else %>
