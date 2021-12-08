@@ -4,9 +4,9 @@ class Component < ApplicationRecord
   COMPONENTTYPES =
     ['docking',
      'habitat',
-     'right-solar',
      'laboratory',
      'left-solar',
+     'right-solar',
      'telescope',
      'top-solar']
   validates :component_type, presence: true, inclusion: { in: COMPONENTTYPES }
