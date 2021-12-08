@@ -5,7 +5,7 @@
 
   <div class="station-container">
     <% @top_row.each do |attachment_space| %>
-      <div class="station-module-card">
+      <div class="station-module-card" onmouseover="animate()">
         <% if attachment_space.component.present? %>
           <%= image_tag attachment_space.component.image_url %>
         <% elsif @attachment_spaces.where(id: (attachment_space.id + 6), component_id: 1..2).present? %>

@@ -1,3 +1,9 @@
+@keyframes animate {
+    0% { left: 0px; }
+    50% { left: -250px; }
+    100% { left: -500px; }
+}
+
 .station-module-card {
   position: relative;
   width: 250px;
@@ -5,8 +11,10 @@
   overflow: hidden;
   img {
     position: absolute;
-    animation: move 5s infinite;
-    left: -250px;
+    animation-name: animate;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
   }
   p {
     position: absolute;
